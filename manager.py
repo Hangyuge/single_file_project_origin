@@ -4,7 +4,10 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config.from_object('config')
 db = SQLAlchemy(app=app)
+
+
 migrate = Migrate(app=app, db=db)
 manager = Manager(app=app)
 manager.add_command('db', MigrateCommand)
